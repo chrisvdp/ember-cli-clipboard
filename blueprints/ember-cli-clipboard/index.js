@@ -3,7 +3,7 @@ module.exports = {
 
   normalizeEntityName: function() {},
 
-  beforeInstall: function (options) {
+  afterInstall: function (options) {
     this.addBowerPackageToProject('clipboard', '1.4.0');
   }
 };
