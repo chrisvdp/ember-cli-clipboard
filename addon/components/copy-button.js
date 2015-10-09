@@ -7,7 +7,7 @@ const { get, set } = Ember;
 export default Ember.Component.extend({
   layout: layout,
   tagName: 'button',
-  classNames: ['copy-btn'],
+  classNames: ['btn--copy'],
   attributeBindings: [
     'clipboardText:data-clipboard-text',
     'clipboardTarget:data-clipboard-target',
@@ -30,6 +30,7 @@ export default Ember.Component.extend({
     set(this, 'clipboard', clipboard);
 
     get(this, 'clipboardEvents').forEach(action => {
+      window.getSelection().removeAllRanges();
       clipboard.on(action, Ember.run.bind(this, function(e) {
         try {
           this.sendAction(action, e);
